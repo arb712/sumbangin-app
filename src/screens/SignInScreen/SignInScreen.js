@@ -49,6 +49,7 @@ const SignInScreen = () => {
           text="Forgot Password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
+          mrgn="50"
         />
         <CustomButton
           text="Sign In With Google"
