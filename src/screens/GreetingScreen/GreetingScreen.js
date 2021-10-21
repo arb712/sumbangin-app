@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, useWindowDimensions} from 'react-native';
 import GreetingImage from '../../../assets/images/greeting-image.png';
-import Logo from '../../../assets/images/sumbangin-logo-smaller.png';
+import Logo from '../../../assets/images/sumbangin-logo-darksmaller.png';
 
 import CustomButton from '../../components/CustomButton';
 
@@ -33,12 +33,12 @@ const GreetingScreen = () => {
         text="Masuk"
         onPress={MasukFunc}
         bgColor="#FFFFFF"
-        fgColor="#65BCBF"
+        fgColor="#082032"
       />
       <CustomButton
         text="Register"
         onPress={RegisterFunc}
-        bgColor="#65BCBF"
+        bgColor="#082032"
         fgColor="#FFFFFF"
       />
     </View>
@@ -47,8 +47,10 @@ const GreetingScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
+    flex: 1,
     alignItems: 'center',
-    padding: 35,
+    backgroundColor: '#082032',
+    paddingTop: 40,
   },
   logo: {
     maxWidth: 250,

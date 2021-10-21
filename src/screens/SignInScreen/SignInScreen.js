@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-import Logo from '../../../assets/images/sumbangin-logo-smaller.png';
+import Logo from '../../../assets/images/sumbangin-logo-smaller-dark.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 
@@ -44,12 +44,17 @@ const SignInScreen = () => {
           setValue={setPassword}
           secureTextEntry={true}
         />
-        <CustomButton text="Masuk" onPress={onSignInPressed} />
         <CustomButton
           text="Forgot Password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
-          mrgn="50"
+          fgColor="#082032"
+        />
+        <CustomButton
+          text="Masuk"
+          onPress={onSignInPressed}
+          bgColor="#082032"
+          fgColor="white"
         />
         <CustomButton
           text="Sign In With Google"
@@ -61,6 +66,7 @@ const SignInScreen = () => {
           text="Don't have an account? Create One"
           onPress={onClickRegister}
           type="TERTIARY"
+          fgColor="#082032"
         />
       </View>
     </ScrollView>
@@ -70,6 +76,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
+    marginTop: 60,
   },
   logo: {
     maxWidth: 250,

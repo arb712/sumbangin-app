@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 
-const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
+const CustomInput = ({type, value, setValue, placeholder, secureTextEntry}) => {
   return (
     <View style={styles.container}>
       <TextInput
         value={value}
         onChangeText={setValue}
         placeholder={placeholder}
-        style={styles.input}
+        style={[styles.input, styles[`container_${type}`]]}
         secureTextEntry={secureTextEntry}
       />
     </View>
@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     marginVertical: 5,
+  },
+  container_SEARCH: {
+    padding: 20,
+    fontSize: 20,
+    textAlign: 'center',
   },
   input: {},
 });

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   container_TERTIARY: {},
   text: {
     fontWeight: 'bold',
-    color: '#65BCBF',
+    color: '#082032',
     fontSize: 18,
   },
   text_TERTIARY: {
