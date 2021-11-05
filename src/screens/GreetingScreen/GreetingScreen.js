@@ -4,15 +4,15 @@ import GreetingImage from '../../../assets/images/greeting-image.png';
 import Logo from '../../../assets/images/sumbangin-logo-darksmaller.png';
 
 import CustomButton from '../../components/CustomButton';
-
-const GreetingScreen = () => {
+import {Button} from 'react-native-elements';
+const GreetingScreen = ({navigation}) => {
   const {height} = useWindowDimensions();
 
   const MasukFunc = () => {
-    console.warn('Masuk Pencet');
+    navigation.navigate('SignIn');
   };
   const RegisterFunc = () => {
-    console.warn('Register Pencet');
+    navigation.navigate('SignUp');
   };
   return (
     <View style={styles.root}>
@@ -36,7 +36,7 @@ const GreetingScreen = () => {
         fgColor="#082032"
       />
       <CustomButton
-        text="Register"
+        text="Daftar"
         onPress={RegisterFunc}
         bgColor="#082032"
         fgColor="#FFFFFF"

@@ -1,22 +1,29 @@
 import React, {useState} from 'react';
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
 import Logo from '../../../assets/images/sumbangin-logo-smaller-dark.png';
-import CustomInput from '../../components/CustomInput';
+import {CommonActions} from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
 
-const SignInScreen = () => {
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Input, Text, SocialIcon} from 'react-native-elements';
+
+const SignInScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onSignInPressed = () => {
-    console.warn('Sign In');
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{name: 'BottomNav'}],
+      }),
+    );
   };
   const onForgotPasswordPressed = () => {
     console.warn('Forgot Password');
@@ -25,7 +32,7 @@ const SignInScreen = () => {
     console.warn('Google');
   };
   const onClickRegister = () => {
-    console.warn('Go to Register');
+    navigation.navigate('SignUp');
   };
 
   const {height} = useWindowDimensions();
@@ -37,37 +44,36 @@ const SignInScreen = () => {
           style={[styles.logo, {height: height * 0.3}]}
           resizeMode="contain"
         />
-        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
-        <CustomInput
+        <Input
+          placeholder="Email"
+          containerStyle={{width: '90%'}}
+          leftIcon={<Icon name="email" size={20} color="black" />}
+        />
+        <Input
           placeholder="Password"
-          value={password}
-          setValue={setPassword}
+          containerStyle={{width: '90%'}}
+          leftIcon={<Icon name="lock" size={20} color="black" />}
           secureTextEntry={true}
         />
-        <CustomButton
-          text="Forgot Password?"
-          onPress={onForgotPasswordPressed}
-          type="TERTIARY"
-          fgColor="#082032"
-        />
+        <Text onPress={onForgotPasswordPressed} style={styles.textLink}>
+          Lupa Password?
+        </Text>
         <CustomButton
           text="Masuk"
           onPress={onSignInPressed}
           bgColor="#082032"
           fgColor="white"
         />
-        <CustomButton
-          text="Sign In With Google"
+        <SocialIcon
+          title="Google Sign In"
+          button
+          type="google"
+          style={styles.googleButton}
           onPress={onSignInWithGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
         />
-        <CustomButton
-          text="Don't have an account? Create One"
-          onPress={onClickRegister}
-          type="TERTIARY"
-          fgColor="#082032"
-        />
+        <Text onPress={onClickRegister} style={styles.textLink}>
+          Tidak punya akun? Daftar
+        </Text>
       </View>
     </ScrollView>
   );
@@ -81,6 +87,16 @@ const styles = StyleSheet.create({
   logo: {
     maxWidth: 250,
     maxHeight: 200,
+  },
+  textLink: {
+    fontWeight: 'bold',
+    color: '#082032',
+    fontSize: 18,
+    marginVertical: 5,
+    padding: 15,
+  },
+  googleButton: {
+    width: '85%',
   },
 });
 

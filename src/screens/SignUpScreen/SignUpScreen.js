@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 
-const SignUpScreen = () => {
+import {Input, Text, SocialIcon} from 'react-native-elements';
+
+const SignUpScreen = ({navigation}) => {
   const [firstName, setfirstName] = useState('');
 
   const Register = () => {
@@ -13,57 +15,33 @@ const SignUpScreen = () => {
     console.warn('Google');
   };
   const onPressAble = () => {
-    console.warn('Pressable');
+    navigation.navigate('SignIn');
   };
   return (
     <ScrollView>
       <View style={styles.root}>
         <Text style={styles.textCreate}>Create Account</Text>
-        <CustomInput
-          placeholder="First Name"
-          value={firstName}
-          setValue={setfirstName}
-        />
-        <CustomInput
-          placeholder="Last Name"
-          value={firstName}
-          setValue={setfirstName}
-        />
-        <CustomInput
-          placeholder="No Handphone"
-          value={firstName}
-          setValue={setfirstName}
-        />
-        <CustomInput
-          placeholder="Email"
-          value={firstName}
-          setValue={setfirstName}
-        />
-        <CustomInput
-          placeholder="Password"
-          value={firstName}
-          setValue={setfirstName}
-          secureTextEntry={true}
-        />
+        <Input placeholder="Nama pertama" containerStyle={{width: '90%'}} />
+        <Input placeholder="Nama terakhir" containerStyle={{width: '90%'}} />
+        <Input placeholder="No Handphone" containerStyle={{width: '90%'}} />
+        <Input placeholder="Email" containerStyle={{width: '90%'}} />
+        <Input placeholder="Password" containerStyle={{width: '90%'}} />
         <CustomButton
-          text="Register"
+          text="Daftar"
           onPress={Register}
           bgColor="#082032"
           fgColor="white"
           style={styles.custBut}
         />
-        <CustomButton
-          text="Sign In With Google"
-          onPress={SignInGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
+        <SocialIcon
+          title="Google Sign In"
+          button
+          type="google"
+          style={styles.googleButton}
         />
-        <CustomButton
-          text="Have an account? Sign In"
-          onPress={SignInGoogle}
-          fgColor="#082032"
-          type="TERTIARY"
-        />
+        <Text onPress={onPressAble} style={styles.text}>
+          Punya Akun? Login
+        </Text>
       </View>
     </ScrollView>
   );
@@ -73,7 +51,8 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     backgroundColor: '#F9FBFC',
-    marginTop: 60,
+    paddingTop: 60,
+    paddingBottom: 20,
   },
   custBut: {
     marginTop: 50,
@@ -85,8 +64,18 @@ const styles = StyleSheet.create({
     fontSize: 35,
     padding: 20,
   },
+  text: {
+    fontWeight: 'bold',
+    color: '#082032',
+    fontSize: 18,
+    marginVertical: 5,
+    padding: 15,
+  },
   registerButton: {
     padding: 20,
+  },
+  googleButton: {
+    width: '85%',
   },
 });
 
